@@ -11,16 +11,17 @@ class InstallCheckMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        try {
-            DB::connection()->getPdo();
-        } catch (\Exception $e) {
-            return redirect('install/initialize')->with('error', 'Could not find MySQL driver or Connection is Not Established');
-        }
+        // try {
+        //     DB::connection()->getPdo();
+        // } catch (\Exception $e) {
+        //     return redirect('install/initialize')->with('error', 'Could not find MySQL driver or Connection is Not Established');
+        // }
 
-        if (Schema::hasTable('settings') && Schema::hasTable('users') && isInstalled()) {
-            return $next($request);
-        }
+        // if (Schema::hasTable('settings') && Schema::hasTable('users') && isInstalled()) {
+        //     return $next($request);
+        // }
 
-        return redirect('install/initialize');
+        // return redirect('install/initialize');
+        return $next($request);
     }
 }
